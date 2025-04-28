@@ -1,0 +1,7 @@
+reportlab 
+PyPDF2
+ply 
+numpy 
+matplotlib 
+seaborn 
+scikit-learn

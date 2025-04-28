@@ -1,0 +1,4 @@
+input_coords = [5, 10, 15, 20, 25]
+shifted_coords = input_coords - [2, 2, 2, 2, 2]
+doubled_coords = shifted_coords * 2
+scatter(input_coords, doubled_coords)

@@ -1,0 +1,1477 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement_list statement
+Rule 3     statement_list -> statement
+Rule 4     statement -> assignment
+Rule 5     statement -> conditional
+Rule 6     statement -> while_loop
+Rule 7     statement -> function_call
+Rule 8     statement -> auxiliary
+Rule 9     statement -> expression
+Rule 10    assignment -> ID EQ expression
+Rule 11    expression -> expression PLUS term
+Rule 12    expression -> expression MINUS term
+Rule 13    expression -> term
+Rule 14    term -> term MULT factor
+Rule 15    term -> term DIV factor
+Rule 16    term -> factor
+Rule 17    factor -> NUM
+Rule 18    factor -> ID
+Rule 19    factor -> LPAREN expression RPAREN
+Rule 20    factor -> MINUS factor
+Rule 21    factor -> LBRACKET list_elements RBRACKET
+Rule 22    list_elements -> list_elements COMMA expression
+Rule 23    list_elements -> expression
+Rule 24    conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE
+Rule 25    conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+Rule 26    while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE
+Rule 27    function_call -> ID LPAREN arg_list_opt RPAREN
+Rule 28    arg_list_opt -> arg_list
+Rule 29    arg_list_opt -> empty
+Rule 30    arg_list -> expression
+Rule 31    arg_list -> expression COMMA arg_list
+Rule 32    empty -> <empty>
+Rule 33    auxiliary -> AUX_START aux_code AUX_END
+Rule 34    aux_code -> empty
+
+Terminals, with rules where they appear
+
+AUX_END              : 33
+AUX_START            : 33
+COMMA                : 22 31
+DIV                  : 15
+ELSE                 : 25
+EQ                   : 10
+ID                   : 10 18 27
+IF                   : 24 25
+LBRACE               : 24 25 25 26
+LBRACKET             : 21
+LPAREN               : 19 24 25 26 27
+MINUS                : 12 20
+MULT                 : 14
+NUM                  : 17
+PLUS                 : 11
+RBRACE               : 24 25 25 26
+RBRACKET             : 21
+RPAREN               : 19 24 25 26 27
+WHILE                : 26
+error                : 
+
+Nonterminals, with rules where they appear
+
+arg_list             : 28 31
+arg_list_opt         : 27
+assignment           : 4
+aux_code             : 33
+auxiliary            : 8
+conditional          : 5
+empty                : 29 34
+expression           : 9 10 11 12 19 22 23 24 25 26 30 31
+factor               : 14 15 16 20
+function_call        : 7
+list_elements        : 21 22
+program              : 0
+statement            : 2 3
+statement_list       : 1 2 24 25 25 26
+term                 : 11 12 13 14 15
+while_loop           : 6
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . conditional
+    (6) statement -> . while_loop
+    (7) statement -> . function_call
+    (8) statement -> . auxiliary
+    (9) statement -> . expression
+    (10) assignment -> . ID EQ expression
+    (24) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (26) while_loop -> . WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (27) function_call -> . ID LPAREN arg_list_opt RPAREN
+    (33) auxiliary -> . AUX_START aux_code AUX_END
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    ID              shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 13
+    AUX_START       shift and go to state 14
+    NUM             shift and go to state 18
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    conditional                    shift and go to state 5
+    while_loop                     shift and go to state 6
+    function_call                  shift and go to state 7
+    auxiliary                      shift and go to state 8
+    expression                     shift and go to state 9
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . assignment
+    (5) statement -> . conditional
+    (6) statement -> . while_loop
+    (7) statement -> . function_call
+    (8) statement -> . auxiliary
+    (9) statement -> . expression
+    (10) assignment -> . ID EQ expression
+    (24) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (26) while_loop -> . WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (27) function_call -> . ID LPAREN arg_list_opt RPAREN
+    (33) auxiliary -> . AUX_START aux_code AUX_END
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    ID              shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 13
+    AUX_START       shift and go to state 14
+    NUM             shift and go to state 18
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    statement                      shift and go to state 20
+    assignment                     shift and go to state 4
+    conditional                    shift and go to state 5
+    while_loop                     shift and go to state 6
+    function_call                  shift and go to state 7
+    auxiliary                      shift and go to state 8
+    expression                     shift and go to state 9
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 3
+
+    (3) statement_list -> statement .
+
+    ID              reduce using rule 3 (statement_list -> statement .)
+    IF              reduce using rule 3 (statement_list -> statement .)
+    WHILE           reduce using rule 3 (statement_list -> statement .)
+    AUX_START       reduce using rule 3 (statement_list -> statement .)
+    NUM             reduce using rule 3 (statement_list -> statement .)
+    LPAREN          reduce using rule 3 (statement_list -> statement .)
+    MINUS           reduce using rule 3 (statement_list -> statement .)
+    LBRACKET        reduce using rule 3 (statement_list -> statement .)
+    $end            reduce using rule 3 (statement_list -> statement .)
+    RBRACE          reduce using rule 3 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> assignment .
+
+    ID              reduce using rule 4 (statement -> assignment .)
+    IF              reduce using rule 4 (statement -> assignment .)
+    WHILE           reduce using rule 4 (statement -> assignment .)
+    AUX_START       reduce using rule 4 (statement -> assignment .)
+    NUM             reduce using rule 4 (statement -> assignment .)
+    LPAREN          reduce using rule 4 (statement -> assignment .)
+    MINUS           reduce using rule 4 (statement -> assignment .)
+    LBRACKET        reduce using rule 4 (statement -> assignment .)
+    $end            reduce using rule 4 (statement -> assignment .)
+    RBRACE          reduce using rule 4 (statement -> assignment .)
+
+
+state 5
+
+    (5) statement -> conditional .
+
+    ID              reduce using rule 5 (statement -> conditional .)
+    IF              reduce using rule 5 (statement -> conditional .)
+    WHILE           reduce using rule 5 (statement -> conditional .)
+    AUX_START       reduce using rule 5 (statement -> conditional .)
+    NUM             reduce using rule 5 (statement -> conditional .)
+    LPAREN          reduce using rule 5 (statement -> conditional .)
+    MINUS           reduce using rule 5 (statement -> conditional .)
+    LBRACKET        reduce using rule 5 (statement -> conditional .)
+    $end            reduce using rule 5 (statement -> conditional .)
+    RBRACE          reduce using rule 5 (statement -> conditional .)
+
+
+state 6
+
+    (6) statement -> while_loop .
+
+    ID              reduce using rule 6 (statement -> while_loop .)
+    IF              reduce using rule 6 (statement -> while_loop .)
+    WHILE           reduce using rule 6 (statement -> while_loop .)
+    AUX_START       reduce using rule 6 (statement -> while_loop .)
+    NUM             reduce using rule 6 (statement -> while_loop .)
+    LPAREN          reduce using rule 6 (statement -> while_loop .)
+    MINUS           reduce using rule 6 (statement -> while_loop .)
+    LBRACKET        reduce using rule 6 (statement -> while_loop .)
+    $end            reduce using rule 6 (statement -> while_loop .)
+    RBRACE          reduce using rule 6 (statement -> while_loop .)
+
+
+state 7
+
+    (7) statement -> function_call .
+
+    ID              reduce using rule 7 (statement -> function_call .)
+    IF              reduce using rule 7 (statement -> function_call .)
+    WHILE           reduce using rule 7 (statement -> function_call .)
+    AUX_START       reduce using rule 7 (statement -> function_call .)
+    NUM             reduce using rule 7 (statement -> function_call .)
+    LPAREN          reduce using rule 7 (statement -> function_call .)
+    MINUS           reduce using rule 7 (statement -> function_call .)
+    LBRACKET        reduce using rule 7 (statement -> function_call .)
+    $end            reduce using rule 7 (statement -> function_call .)
+    RBRACE          reduce using rule 7 (statement -> function_call .)
+
+
+state 8
+
+    (8) statement -> auxiliary .
+
+    ID              reduce using rule 8 (statement -> auxiliary .)
+    IF              reduce using rule 8 (statement -> auxiliary .)
+    WHILE           reduce using rule 8 (statement -> auxiliary .)
+    AUX_START       reduce using rule 8 (statement -> auxiliary .)
+    NUM             reduce using rule 8 (statement -> auxiliary .)
+    LPAREN          reduce using rule 8 (statement -> auxiliary .)
+    MINUS           reduce using rule 8 (statement -> auxiliary .)
+    LBRACKET        reduce using rule 8 (statement -> auxiliary .)
+    $end            reduce using rule 8 (statement -> auxiliary .)
+    RBRACE          reduce using rule 8 (statement -> auxiliary .)
+
+
+state 9
+
+    (9) statement -> expression .
+    (11) expression -> expression . PLUS term
+    (12) expression -> expression . MINUS term
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    ID              reduce using rule 9 (statement -> expression .)
+    IF              reduce using rule 9 (statement -> expression .)
+    WHILE           reduce using rule 9 (statement -> expression .)
+    AUX_START       reduce using rule 9 (statement -> expression .)
+    NUM             reduce using rule 9 (statement -> expression .)
+    LPAREN          reduce using rule 9 (statement -> expression .)
+    LBRACKET        reduce using rule 9 (statement -> expression .)
+    $end            reduce using rule 9 (statement -> expression .)
+    RBRACE          reduce using rule 9 (statement -> expression .)
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+
+  ! MINUS           [ reduce using rule 9 (statement -> expression .) ]
+
+
+state 10
+
+    (10) assignment -> ID . EQ expression
+    (27) function_call -> ID . LPAREN arg_list_opt RPAREN
+    (18) factor -> ID .
+
+  ! shift/reduce conflict for LPAREN resolved as shift
+    EQ              shift and go to state 23
+    LPAREN          shift and go to state 24
+    MULT            reduce using rule 18 (factor -> ID .)
+    DIV             reduce using rule 18 (factor -> ID .)
+    PLUS            reduce using rule 18 (factor -> ID .)
+    MINUS           reduce using rule 18 (factor -> ID .)
+    ID              reduce using rule 18 (factor -> ID .)
+    IF              reduce using rule 18 (factor -> ID .)
+    WHILE           reduce using rule 18 (factor -> ID .)
+    AUX_START       reduce using rule 18 (factor -> ID .)
+    NUM             reduce using rule 18 (factor -> ID .)
+    LBRACKET        reduce using rule 18 (factor -> ID .)
+    $end            reduce using rule 18 (factor -> ID .)
+    RBRACE          reduce using rule 18 (factor -> ID .)
+
+  ! LPAREN          [ reduce using rule 18 (factor -> ID .) ]
+
+
+state 11
+
+    (24) conditional -> IF . LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> IF . LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+
+    LPAREN          shift and go to state 25
+
+
+state 12
+
+    (19) factor -> LPAREN . expression RPAREN
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 26
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 13
+
+    (26) while_loop -> WHILE . LPAREN expression RPAREN LBRACE statement_list RBRACE
+
+    LPAREN          shift and go to state 28
+
+
+state 14
+
+    (33) auxiliary -> AUX_START . aux_code AUX_END
+    (34) aux_code -> . empty
+    (32) empty -> .
+
+    AUX_END         reduce using rule 32 (empty -> .)
+
+    aux_code                       shift and go to state 29
+    empty                          shift and go to state 30
+
+state 15
+
+    (13) expression -> term .
+    (14) term -> term . MULT factor
+    (15) term -> term . DIV factor
+
+    PLUS            reduce using rule 13 (expression -> term .)
+    MINUS           reduce using rule 13 (expression -> term .)
+    ID              reduce using rule 13 (expression -> term .)
+    IF              reduce using rule 13 (expression -> term .)
+    WHILE           reduce using rule 13 (expression -> term .)
+    AUX_START       reduce using rule 13 (expression -> term .)
+    NUM             reduce using rule 13 (expression -> term .)
+    LPAREN          reduce using rule 13 (expression -> term .)
+    LBRACKET        reduce using rule 13 (expression -> term .)
+    $end            reduce using rule 13 (expression -> term .)
+    RPAREN          reduce using rule 13 (expression -> term .)
+    RBRACKET        reduce using rule 13 (expression -> term .)
+    COMMA           reduce using rule 13 (expression -> term .)
+    RBRACE          reduce using rule 13 (expression -> term .)
+    MULT            shift and go to state 31
+    DIV             shift and go to state 32
+
+
+state 16
+
+    (20) factor -> MINUS . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    factor                         shift and go to state 33
+
+state 17
+
+    (16) term -> factor .
+
+    MULT            reduce using rule 16 (term -> factor .)
+    DIV             reduce using rule 16 (term -> factor .)
+    PLUS            reduce using rule 16 (term -> factor .)
+    MINUS           reduce using rule 16 (term -> factor .)
+    ID              reduce using rule 16 (term -> factor .)
+    IF              reduce using rule 16 (term -> factor .)
+    WHILE           reduce using rule 16 (term -> factor .)
+    AUX_START       reduce using rule 16 (term -> factor .)
+    NUM             reduce using rule 16 (term -> factor .)
+    LPAREN          reduce using rule 16 (term -> factor .)
+    LBRACKET        reduce using rule 16 (term -> factor .)
+    $end            reduce using rule 16 (term -> factor .)
+    RPAREN          reduce using rule 16 (term -> factor .)
+    RBRACKET        reduce using rule 16 (term -> factor .)
+    COMMA           reduce using rule 16 (term -> factor .)
+    RBRACE          reduce using rule 16 (term -> factor .)
+
+
+state 18
+
+    (17) factor -> NUM .
+
+    MULT            reduce using rule 17 (factor -> NUM .)
+    DIV             reduce using rule 17 (factor -> NUM .)
+    PLUS            reduce using rule 17 (factor -> NUM .)
+    MINUS           reduce using rule 17 (factor -> NUM .)
+    ID              reduce using rule 17 (factor -> NUM .)
+    IF              reduce using rule 17 (factor -> NUM .)
+    WHILE           reduce using rule 17 (factor -> NUM .)
+    AUX_START       reduce using rule 17 (factor -> NUM .)
+    NUM             reduce using rule 17 (factor -> NUM .)
+    LPAREN          reduce using rule 17 (factor -> NUM .)
+    LBRACKET        reduce using rule 17 (factor -> NUM .)
+    $end            reduce using rule 17 (factor -> NUM .)
+    RPAREN          reduce using rule 17 (factor -> NUM .)
+    RBRACKET        reduce using rule 17 (factor -> NUM .)
+    COMMA           reduce using rule 17 (factor -> NUM .)
+    RBRACE          reduce using rule 17 (factor -> NUM .)
+
+
+state 19
+
+    (21) factor -> LBRACKET . list_elements RBRACKET
+    (22) list_elements -> . list_elements COMMA expression
+    (23) list_elements -> . expression
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    list_elements                  shift and go to state 34
+    expression                     shift and go to state 35
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 20
+
+    (2) statement_list -> statement_list statement .
+
+    ID              reduce using rule 2 (statement_list -> statement_list statement .)
+    IF              reduce using rule 2 (statement_list -> statement_list statement .)
+    WHILE           reduce using rule 2 (statement_list -> statement_list statement .)
+    AUX_START       reduce using rule 2 (statement_list -> statement_list statement .)
+    NUM             reduce using rule 2 (statement_list -> statement_list statement .)
+    LPAREN          reduce using rule 2 (statement_list -> statement_list statement .)
+    MINUS           reduce using rule 2 (statement_list -> statement_list statement .)
+    LBRACKET        reduce using rule 2 (statement_list -> statement_list statement .)
+    $end            reduce using rule 2 (statement_list -> statement_list statement .)
+    RBRACE          reduce using rule 2 (statement_list -> statement_list statement .)
+
+
+state 21
+
+    (11) expression -> expression PLUS . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    term                           shift and go to state 36
+    factor                         shift and go to state 17
+
+state 22
+
+    (12) expression -> expression MINUS . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    term                           shift and go to state 37
+    factor                         shift and go to state 17
+
+state 23
+
+    (10) assignment -> ID EQ . expression
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 38
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 24
+
+    (27) function_call -> ID LPAREN . arg_list_opt RPAREN
+    (28) arg_list_opt -> . arg_list
+    (29) arg_list_opt -> . empty
+    (30) arg_list -> . expression
+    (31) arg_list -> . expression COMMA arg_list
+    (32) empty -> .
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    RPAREN          reduce using rule 32 (empty -> .)
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    arg_list_opt                   shift and go to state 39
+    arg_list                       shift and go to state 40
+    empty                          shift and go to state 41
+    expression                     shift and go to state 42
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 25
+
+    (24) conditional -> IF LPAREN . expression RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> IF LPAREN . expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 43
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 26
+
+    (19) factor -> LPAREN expression . RPAREN
+    (11) expression -> expression . PLUS term
+    (12) expression -> expression . MINUS term
+
+    RPAREN          shift and go to state 44
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+
+
+state 27
+
+    (18) factor -> ID .
+
+    MULT            reduce using rule 18 (factor -> ID .)
+    DIV             reduce using rule 18 (factor -> ID .)
+    RPAREN          reduce using rule 18 (factor -> ID .)
+    PLUS            reduce using rule 18 (factor -> ID .)
+    MINUS           reduce using rule 18 (factor -> ID .)
+    ID              reduce using rule 18 (factor -> ID .)
+    IF              reduce using rule 18 (factor -> ID .)
+    WHILE           reduce using rule 18 (factor -> ID .)
+    AUX_START       reduce using rule 18 (factor -> ID .)
+    NUM             reduce using rule 18 (factor -> ID .)
+    LPAREN          reduce using rule 18 (factor -> ID .)
+    LBRACKET        reduce using rule 18 (factor -> ID .)
+    $end            reduce using rule 18 (factor -> ID .)
+    RBRACKET        reduce using rule 18 (factor -> ID .)
+    COMMA           reduce using rule 18 (factor -> ID .)
+    RBRACE          reduce using rule 18 (factor -> ID .)
+
+
+state 28
+
+    (26) while_loop -> WHILE LPAREN . expression RPAREN LBRACE statement_list RBRACE
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 45
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 29
+
+    (33) auxiliary -> AUX_START aux_code . AUX_END
+
+    AUX_END         shift and go to state 46
+
+
+state 30
+
+    (34) aux_code -> empty .
+
+    AUX_END         reduce using rule 34 (aux_code -> empty .)
+
+
+state 31
+
+    (14) term -> term MULT . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    factor                         shift and go to state 47
+
+state 32
+
+    (15) term -> term DIV . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    factor                         shift and go to state 48
+
+state 33
+
+    (20) factor -> MINUS factor .
+
+    MULT            reduce using rule 20 (factor -> MINUS factor .)
+    DIV             reduce using rule 20 (factor -> MINUS factor .)
+    PLUS            reduce using rule 20 (factor -> MINUS factor .)
+    MINUS           reduce using rule 20 (factor -> MINUS factor .)
+    ID              reduce using rule 20 (factor -> MINUS factor .)
+    IF              reduce using rule 20 (factor -> MINUS factor .)
+    WHILE           reduce using rule 20 (factor -> MINUS factor .)
+    AUX_START       reduce using rule 20 (factor -> MINUS factor .)
+    NUM             reduce using rule 20 (factor -> MINUS factor .)
+    LPAREN          reduce using rule 20 (factor -> MINUS factor .)
+    LBRACKET        reduce using rule 20 (factor -> MINUS factor .)
+    $end            reduce using rule 20 (factor -> MINUS factor .)
+    RPAREN          reduce using rule 20 (factor -> MINUS factor .)
+    RBRACKET        reduce using rule 20 (factor -> MINUS factor .)
+    COMMA           reduce using rule 20 (factor -> MINUS factor .)
+    RBRACE          reduce using rule 20 (factor -> MINUS factor .)
+
+
+state 34
+
+    (21) factor -> LBRACKET list_elements . RBRACKET
+    (22) list_elements -> list_elements . COMMA expression
+
+    RBRACKET        shift and go to state 49
+    COMMA           shift and go to state 50
+
+
+state 35
+
+    (23) list_elements -> expression .
+    (11) expression -> expression . PLUS term
+    (12) expression -> expression . MINUS term
+
+    RBRACKET        reduce using rule 23 (list_elements -> expression .)
+    COMMA           reduce using rule 23 (list_elements -> expression .)
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+
+
+state 36
+
+    (11) expression -> expression PLUS term .
+    (14) term -> term . MULT factor
+    (15) term -> term . DIV factor
+
+    PLUS            reduce using rule 11 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 11 (expression -> expression PLUS term .)
+    ID              reduce using rule 11 (expression -> expression PLUS term .)
+    IF              reduce using rule 11 (expression -> expression PLUS term .)
+    WHILE           reduce using rule 11 (expression -> expression PLUS term .)
+    AUX_START       reduce using rule 11 (expression -> expression PLUS term .)
+    NUM             reduce using rule 11 (expression -> expression PLUS term .)
+    LPAREN          reduce using rule 11 (expression -> expression PLUS term .)
+    LBRACKET        reduce using rule 11 (expression -> expression PLUS term .)
+    $end            reduce using rule 11 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 11 (expression -> expression PLUS term .)
+    RBRACKET        reduce using rule 11 (expression -> expression PLUS term .)
+    COMMA           reduce using rule 11 (expression -> expression PLUS term .)
+    RBRACE          reduce using rule 11 (expression -> expression PLUS term .)
+    MULT            shift and go to state 31
+    DIV             shift and go to state 32
+
+
+state 37
+
+    (12) expression -> expression MINUS term .
+    (14) term -> term . MULT factor
+    (15) term -> term . DIV factor
+
+    PLUS            reduce using rule 12 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 12 (expression -> expression MINUS term .)
+    ID              reduce using rule 12 (expression -> expression MINUS term .)
+    IF              reduce using rule 12 (expression -> expression MINUS term .)
+    WHILE           reduce using rule 12 (expression -> expression MINUS term .)
+    AUX_START       reduce using rule 12 (expression -> expression MINUS term .)
+    NUM             reduce using rule 12 (expression -> expression MINUS term .)
+    LPAREN          reduce using rule 12 (expression -> expression MINUS term .)
+    LBRACKET        reduce using rule 12 (expression -> expression MINUS term .)
+    $end            reduce using rule 12 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 12 (expression -> expression MINUS term .)
+    RBRACKET        reduce using rule 12 (expression -> expression MINUS term .)
+    COMMA           reduce using rule 12 (expression -> expression MINUS term .)
+    RBRACE          reduce using rule 12 (expression -> expression MINUS term .)
+    MULT            shift and go to state 31
+    DIV             shift and go to state 32
+
+
+state 38
+
+    (10) assignment -> ID EQ expression .
+    (11) expression -> expression . PLUS term
+    (12) expression -> expression . MINUS term
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    ID              reduce using rule 10 (assignment -> ID EQ expression .)
+    IF              reduce using rule 10 (assignment -> ID EQ expression .)
+    WHILE           reduce using rule 10 (assignment -> ID EQ expression .)
+    AUX_START       reduce using rule 10 (assignment -> ID EQ expression .)
+    NUM             reduce using rule 10 (assignment -> ID EQ expression .)
+    LPAREN          reduce using rule 10 (assignment -> ID EQ expression .)
+    LBRACKET        reduce using rule 10 (assignment -> ID EQ expression .)
+    $end            reduce using rule 10 (assignment -> ID EQ expression .)
+    RBRACE          reduce using rule 10 (assignment -> ID EQ expression .)
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+
+  ! MINUS           [ reduce using rule 10 (assignment -> ID EQ expression .) ]
+
+
+state 39
+
+    (27) function_call -> ID LPAREN arg_list_opt . RPAREN
+
+    RPAREN          shift and go to state 51
+
+
+state 40
+
+    (28) arg_list_opt -> arg_list .
+
+    RPAREN          reduce using rule 28 (arg_list_opt -> arg_list .)
+
+
+state 41
+
+    (29) arg_list_opt -> empty .
+
+    RPAREN          reduce using rule 29 (arg_list_opt -> empty .)
+
+
+state 42
+
+    (30) arg_list -> expression .
+    (31) arg_list -> expression . COMMA arg_list
+    (11) expression -> expression . PLUS term
+    (12) expression -> expression . MINUS term
+
+    RPAREN          reduce using rule 30 (arg_list -> expression .)
+    COMMA           shift and go to state 52
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+
+
+state 43
+
+    (24) conditional -> IF LPAREN expression . RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> IF LPAREN expression . RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (11) expression -> expression . PLUS term
+    (12) expression -> expression . MINUS term
+
+    RPAREN          shift and go to state 53
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+
+
+state 44
+
+    (19) factor -> LPAREN expression RPAREN .
+
+    MULT            reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    DIV             reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    ID              reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    IF              reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    WHILE           reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    AUX_START       reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    NUM             reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    LBRACKET        reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    $end            reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    RBRACKET        reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    COMMA           reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+    RBRACE          reduce using rule 19 (factor -> LPAREN expression RPAREN .)
+
+
+state 45
+
+    (26) while_loop -> WHILE LPAREN expression . RPAREN LBRACE statement_list RBRACE
+    (11) expression -> expression . PLUS term
+    (12) expression -> expression . MINUS term
+
+    RPAREN          shift and go to state 54
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+
+
+state 46
+
+    (33) auxiliary -> AUX_START aux_code AUX_END .
+
+    ID              reduce using rule 33 (auxiliary -> AUX_START aux_code AUX_END .)
+    IF              reduce using rule 33 (auxiliary -> AUX_START aux_code AUX_END .)
+    WHILE           reduce using rule 33 (auxiliary -> AUX_START aux_code AUX_END .)
+    AUX_START       reduce using rule 33 (auxiliary -> AUX_START aux_code AUX_END .)
+    NUM             reduce using rule 33 (auxiliary -> AUX_START aux_code AUX_END .)
+    LPAREN          reduce using rule 33 (auxiliary -> AUX_START aux_code AUX_END .)
+    MINUS           reduce using rule 33 (auxiliary -> AUX_START aux_code AUX_END .)
+    LBRACKET        reduce using rule 33 (auxiliary -> AUX_START aux_code AUX_END .)
+    $end            reduce using rule 33 (auxiliary -> AUX_START aux_code AUX_END .)
+    RBRACE          reduce using rule 33 (auxiliary -> AUX_START aux_code AUX_END .)
+
+
+state 47
+
+    (14) term -> term MULT factor .
+
+    MULT            reduce using rule 14 (term -> term MULT factor .)
+    DIV             reduce using rule 14 (term -> term MULT factor .)
+    PLUS            reduce using rule 14 (term -> term MULT factor .)
+    MINUS           reduce using rule 14 (term -> term MULT factor .)
+    ID              reduce using rule 14 (term -> term MULT factor .)
+    IF              reduce using rule 14 (term -> term MULT factor .)
+    WHILE           reduce using rule 14 (term -> term MULT factor .)
+    AUX_START       reduce using rule 14 (term -> term MULT factor .)
+    NUM             reduce using rule 14 (term -> term MULT factor .)
+    LPAREN          reduce using rule 14 (term -> term MULT factor .)
+    LBRACKET        reduce using rule 14 (term -> term MULT factor .)
+    $end            reduce using rule 14 (term -> term MULT factor .)
+    RPAREN          reduce using rule 14 (term -> term MULT factor .)
+    RBRACKET        reduce using rule 14 (term -> term MULT factor .)
+    COMMA           reduce using rule 14 (term -> term MULT factor .)
+    RBRACE          reduce using rule 14 (term -> term MULT factor .)
+
+
+state 48
+
+    (15) term -> term DIV factor .
+
+    MULT            reduce using rule 15 (term -> term DIV factor .)
+    DIV             reduce using rule 15 (term -> term DIV factor .)
+    PLUS            reduce using rule 15 (term -> term DIV factor .)
+    MINUS           reduce using rule 15 (term -> term DIV factor .)
+    ID              reduce using rule 15 (term -> term DIV factor .)
+    IF              reduce using rule 15 (term -> term DIV factor .)
+    WHILE           reduce using rule 15 (term -> term DIV factor .)
+    AUX_START       reduce using rule 15 (term -> term DIV factor .)
+    NUM             reduce using rule 15 (term -> term DIV factor .)
+    LPAREN          reduce using rule 15 (term -> term DIV factor .)
+    LBRACKET        reduce using rule 15 (term -> term DIV factor .)
+    $end            reduce using rule 15 (term -> term DIV factor .)
+    RPAREN          reduce using rule 15 (term -> term DIV factor .)
+    RBRACKET        reduce using rule 15 (term -> term DIV factor .)
+    COMMA           reduce using rule 15 (term -> term DIV factor .)
+    RBRACE          reduce using rule 15 (term -> term DIV factor .)
+
+
+state 49
+
+    (21) factor -> LBRACKET list_elements RBRACKET .
+
+    MULT            reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    DIV             reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    PLUS            reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    MINUS           reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    ID              reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    IF              reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    WHILE           reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    AUX_START       reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    NUM             reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    LPAREN          reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    LBRACKET        reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    $end            reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    RPAREN          reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    RBRACKET        reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    COMMA           reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+    RBRACE          reduce using rule 21 (factor -> LBRACKET list_elements RBRACKET .)
+
+
+state 50
+
+    (22) list_elements -> list_elements COMMA . expression
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 55
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 51
+
+    (27) function_call -> ID LPAREN arg_list_opt RPAREN .
+
+    ID              reduce using rule 27 (function_call -> ID LPAREN arg_list_opt RPAREN .)
+    IF              reduce using rule 27 (function_call -> ID LPAREN arg_list_opt RPAREN .)
+    WHILE           reduce using rule 27 (function_call -> ID LPAREN arg_list_opt RPAREN .)
+    AUX_START       reduce using rule 27 (function_call -> ID LPAREN arg_list_opt RPAREN .)
+    NUM             reduce using rule 27 (function_call -> ID LPAREN arg_list_opt RPAREN .)
+    LPAREN          reduce using rule 27 (function_call -> ID LPAREN arg_list_opt RPAREN .)
+    MINUS           reduce using rule 27 (function_call -> ID LPAREN arg_list_opt RPAREN .)
+    LBRACKET        reduce using rule 27 (function_call -> ID LPAREN arg_list_opt RPAREN .)
+    $end            reduce using rule 27 (function_call -> ID LPAREN arg_list_opt RPAREN .)
+    RBRACE          reduce using rule 27 (function_call -> ID LPAREN arg_list_opt RPAREN .)
+
+
+state 52
+
+    (31) arg_list -> expression COMMA . arg_list
+    (30) arg_list -> . expression
+    (31) arg_list -> . expression COMMA arg_list
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    NUM             shift and go to state 18
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 42
+    arg_list                       shift and go to state 56
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 53
+
+    (24) conditional -> IF LPAREN expression RPAREN . LBRACE statement_list RBRACE
+    (25) conditional -> IF LPAREN expression RPAREN . LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 57
+
+
+state 54
+
+    (26) while_loop -> WHILE LPAREN expression RPAREN . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 58
+
+
+state 55
+
+    (22) list_elements -> list_elements COMMA expression .
+    (11) expression -> expression . PLUS term
+    (12) expression -> expression . MINUS term
+
+    RBRACKET        reduce using rule 22 (list_elements -> list_elements COMMA expression .)
+    COMMA           reduce using rule 22 (list_elements -> list_elements COMMA expression .)
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+
+
+state 56
+
+    (31) arg_list -> expression COMMA arg_list .
+
+    RPAREN          reduce using rule 31 (arg_list -> expression COMMA arg_list .)
+
+
+state 57
+
+    (24) conditional -> IF LPAREN expression RPAREN LBRACE . statement_list RBRACE
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE . statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . conditional
+    (6) statement -> . while_loop
+    (7) statement -> . function_call
+    (8) statement -> . auxiliary
+    (9) statement -> . expression
+    (10) assignment -> . ID EQ expression
+    (24) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (26) while_loop -> . WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (27) function_call -> . ID LPAREN arg_list_opt RPAREN
+    (33) auxiliary -> . AUX_START aux_code AUX_END
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    ID              shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 13
+    AUX_START       shift and go to state 14
+    NUM             shift and go to state 18
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 9
+    statement_list                 shift and go to state 59
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    conditional                    shift and go to state 5
+    while_loop                     shift and go to state 6
+    function_call                  shift and go to state 7
+    auxiliary                      shift and go to state 8
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 58
+
+    (26) while_loop -> WHILE LPAREN expression RPAREN LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . conditional
+    (6) statement -> . while_loop
+    (7) statement -> . function_call
+    (8) statement -> . auxiliary
+    (9) statement -> . expression
+    (10) assignment -> . ID EQ expression
+    (24) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (26) while_loop -> . WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (27) function_call -> . ID LPAREN arg_list_opt RPAREN
+    (33) auxiliary -> . AUX_START aux_code AUX_END
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    ID              shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 13
+    AUX_START       shift and go to state 14
+    NUM             shift and go to state 18
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 9
+    statement_list                 shift and go to state 60
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    conditional                    shift and go to state 5
+    while_loop                     shift and go to state 6
+    function_call                  shift and go to state 7
+    auxiliary                      shift and go to state 8
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 59
+
+    (24) conditional -> IF LPAREN expression RPAREN LBRACE statement_list . RBRACE
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE statement_list . RBRACE ELSE LBRACE statement_list RBRACE
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . assignment
+    (5) statement -> . conditional
+    (6) statement -> . while_loop
+    (7) statement -> . function_call
+    (8) statement -> . auxiliary
+    (9) statement -> . expression
+    (10) assignment -> . ID EQ expression
+    (24) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (26) while_loop -> . WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (27) function_call -> . ID LPAREN arg_list_opt RPAREN
+    (33) auxiliary -> . AUX_START aux_code AUX_END
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    RBRACE          shift and go to state 61
+    ID              shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 13
+    AUX_START       shift and go to state 14
+    NUM             shift and go to state 18
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 9
+    statement                      shift and go to state 20
+    assignment                     shift and go to state 4
+    conditional                    shift and go to state 5
+    while_loop                     shift and go to state 6
+    function_call                  shift and go to state 7
+    auxiliary                      shift and go to state 8
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 60
+
+    (26) while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list . RBRACE
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . assignment
+    (5) statement -> . conditional
+    (6) statement -> . while_loop
+    (7) statement -> . function_call
+    (8) statement -> . auxiliary
+    (9) statement -> . expression
+    (10) assignment -> . ID EQ expression
+    (24) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (26) while_loop -> . WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (27) function_call -> . ID LPAREN arg_list_opt RPAREN
+    (33) auxiliary -> . AUX_START aux_code AUX_END
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    RBRACE          shift and go to state 62
+    ID              shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 13
+    AUX_START       shift and go to state 14
+    NUM             shift and go to state 18
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 9
+    statement                      shift and go to state 20
+    assignment                     shift and go to state 4
+    conditional                    shift and go to state 5
+    while_loop                     shift and go to state 6
+    function_call                  shift and go to state 7
+    auxiliary                      shift and go to state 8
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 61
+
+    (24) conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE . ELSE LBRACE statement_list RBRACE
+
+    ID              reduce using rule 24 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    IF              reduce using rule 24 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    WHILE           reduce using rule 24 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    AUX_START       reduce using rule 24 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    NUM             reduce using rule 24 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    LPAREN          reduce using rule 24 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    MINUS           reduce using rule 24 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    LBRACKET        reduce using rule 24 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    $end            reduce using rule 24 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 24 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    ELSE            shift and go to state 63
+
+
+state 62
+
+    (26) while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .
+
+    ID              reduce using rule 26 (while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    IF              reduce using rule 26 (while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    WHILE           reduce using rule 26 (while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    AUX_START       reduce using rule 26 (while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    NUM             reduce using rule 26 (while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    LPAREN          reduce using rule 26 (while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    MINUS           reduce using rule 26 (while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    LBRACKET        reduce using rule 26 (while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    $end            reduce using rule 26 (while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 26 (while_loop -> WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE .)
+
+
+state 63
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 64
+
+
+state 64
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . assignment
+    (5) statement -> . conditional
+    (6) statement -> . while_loop
+    (7) statement -> . function_call
+    (8) statement -> . auxiliary
+    (9) statement -> . expression
+    (10) assignment -> . ID EQ expression
+    (24) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (26) while_loop -> . WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (27) function_call -> . ID LPAREN arg_list_opt RPAREN
+    (33) auxiliary -> . AUX_START aux_code AUX_END
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    ID              shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 13
+    AUX_START       shift and go to state 14
+    NUM             shift and go to state 18
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 9
+    statement_list                 shift and go to state 65
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    conditional                    shift and go to state 5
+    while_loop                     shift and go to state 6
+    function_call                  shift and go to state 7
+    auxiliary                      shift and go to state 8
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 65
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list . RBRACE
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . assignment
+    (5) statement -> . conditional
+    (6) statement -> . while_loop
+    (7) statement -> . function_call
+    (8) statement -> . auxiliary
+    (9) statement -> . expression
+    (10) assignment -> . ID EQ expression
+    (24) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (25) conditional -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (26) while_loop -> . WHILE LPAREN expression RPAREN LBRACE statement_list RBRACE
+    (27) function_call -> . ID LPAREN arg_list_opt RPAREN
+    (33) auxiliary -> . AUX_START aux_code AUX_END
+    (11) expression -> . expression PLUS term
+    (12) expression -> . expression MINUS term
+    (13) expression -> . term
+    (14) term -> . term MULT factor
+    (15) term -> . term DIV factor
+    (16) term -> . factor
+    (17) factor -> . NUM
+    (18) factor -> . ID
+    (19) factor -> . LPAREN expression RPAREN
+    (20) factor -> . MINUS factor
+    (21) factor -> . LBRACKET list_elements RBRACKET
+
+    RBRACE          shift and go to state 66
+    ID              shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 13
+    AUX_START       shift and go to state 14
+    NUM             shift and go to state 18
+    LPAREN          shift and go to state 12
+    MINUS           shift and go to state 16
+    LBRACKET        shift and go to state 19
+
+    expression                     shift and go to state 9
+    statement                      shift and go to state 20
+    assignment                     shift and go to state 4
+    conditional                    shift and go to state 5
+    while_loop                     shift and go to state 6
+    function_call                  shift and go to state 7
+    auxiliary                      shift and go to state 8
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 66
+
+    (25) conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .
+
+    ID              reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    IF              reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    WHILE           reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    AUX_START       reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    NUM             reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    LPAREN          reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    MINUS           reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    LBRACKET        reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    $end            reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 25 (conditional -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for MINUS in state 9 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 10 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 38 resolved as shift

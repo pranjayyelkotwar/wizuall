@@ -1,0 +1,5 @@
+x_coords = [1, 2, 3, 4, 5]
+y_coords = [2, 3, 5, 7, 6]
+histogram(x_coords, 5)
+scatter(x_coords, y_coords)
+plot(x_coords, y_coords)

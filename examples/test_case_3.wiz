@@ -1,0 +1,6 @@
+a_coords = [10, 20, 30, 40, 50]
+b_coords = [2, 4, 6, 8, 10]
+sum_coords = a_coords + b_coords
+scaled_coords = sum_coords * 2
+offset_coords = scaled_coords - [5, 5, 5, 5, 5]
+final_coords = offset_coords / 4
