@@ -93,7 +93,7 @@ Visualization outputs (e.g., histogram.png, scatter.png, plot.png) are saved in 
 ### Test Case Details:
 - **Test Case 1**: No visualizations (arithmetic only)
 - **Test Case 2**: histogram.png, scatter.png, plot.png
-- **Test Case 6**: No visualizations (arithmetic only)
-- **Test Case 7**: histogram.png, plot.png
-- **Test Case 8**: scatter.png
-- **Test Case 9**: histogram.png, scatter.png, plot.png
+- **Test Case 3**: No visualizations (arithmetic only)
+- **Test Case 4**: histogram.png, plot.png
+- **Test Case 5**: scatter.png
+- **Test Case 6**: histogram.png, scatter.png, plot.png

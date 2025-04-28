@@ -11,20 +11,37 @@ OUTPUT_DIR = '/Users/pranjayyelkotwar/Desktop/3-2/CC/project_final/outputs'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # --- Data Loading ---
-input = np.array([5.0, 10.0, 15.0, 20.0, 25.0])
+x = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
+y = np.array([2.0, 3.0, 5.0, 7.0, 6.0])
 # --- End Data Loading ---
 
 # --- WizUALL Program ---
-input_coords = [5.0, 10.0, 15.0, 20.0, 25.0]
-shifted_coords = np.subtract(input_coords, [2.0, 2.0, 2.0, 2.0, 2.0])
-doubled_coords = np.multiply(shifted_coords, 2.0)
-x_data = input_coords if isinstance(input_coords, (list, np.ndarray)) else [input_coords]
-y_data = doubled_coords if isinstance(doubled_coords, (list, np.ndarray)) else [doubled_coords]
+x_coords = [1.0, 2.0, 3.0, 4.0, 5.0]
+y_coords = [2.0, 3.0, 5.0, 7.0, 6.0]
+data = x_coords if isinstance(x_coords, (list, np.ndarray)) else [x_coords]
+plt.figure()
+plt.hist(data, bins=int(5.0))
+plt.title('Histogram')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.savefig(os.path.join(OUTPUT_DIR, 'histogram.png'))
+plt.close()
+x_data = x_coords if isinstance(x_coords, (list, np.ndarray)) else [x_coords]
+y_data = y_coords if isinstance(y_coords, (list, np.ndarray)) else [y_coords]
 plt.figure()
 plt.scatter(x_data, y_data)
 plt.title('Scatter Plot')
 plt.xlabel('X')
 plt.ylabel('Y')
 plt.savefig(os.path.join(OUTPUT_DIR, 'scatter.png'))
+plt.close()
+x_data = x_coords if isinstance(x_coords, (list, np.ndarray)) else [x_coords]
+y_data = y_coords if isinstance(y_coords, (list, np.ndarray)) else [y_coords]
+plt.figure()
+plt.plot(x_data, y_data)
+plt.title('Line Plot')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.savefig(os.path.join(OUTPUT_DIR, 'plot.png'))
 plt.close()
 # --- End WizUALL Program ---
